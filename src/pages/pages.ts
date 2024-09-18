@@ -137,13 +137,7 @@ import { MangaRead } from './MangaRead/main';
 import { Bakashi } from './Bakashi/main';
 import { TempleScan } from './TempleScan/main';
 import { MangaLib } from './MangaLib/main';
-import { Taiyo } from './Taiyo/main';
-import { AnimesOnline } from './AnimesOnline/main';
-import { Miruro } from './Miruro/main';
-import { Latanime } from './Latanime/main';
-import { MangaRead } from './MangaRead/main';
-import { Bakashi } from './Bakashi/main';
-import { TempleScan } from './TempleScan/main';
+import { AnimeLib } from './AnimeLib/main';
 
 export const pages = {
   nineAnime,
@@ -285,11 +279,5 @@ export const pages = {
   Bakashi,
   TempleScan,
   MangaLib,
-  Taiyo,
-  AnimesOnline,
-  Miruro,
-  Latanime,
-  MangaRead,
-  Bakashi,
-  TempleScan,
+  AnimeLib,
 };
