@@ -30,7 +30,7 @@ const manga: Manga = {
 };
 export const MangaLib: pageInterface = {
   name: 'MangaLib',
-  domain: ['https://test-front.mangalib.me', 'https://mangalib.org', 'https://mangalib.me'],
+  domain: ['https://mangalib.org' /* , 'https://mangalib.me' */],
   languages: ['Russian'],
   type: 'manga',
   getImage() {
