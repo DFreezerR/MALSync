@@ -66,6 +66,7 @@ export class MyAnimeListClass {
         this.related();
         this.friendScore();
         this.relatedTag();
+        await this.enableYoutubeFullscreenButton();
         break;
       case 'bookmarks':
         $(document).ready(() => {
@@ -590,6 +591,22 @@ export class MyAnimeListClass {
           });
         }
       });
+    });
+  }
+
+  async enableYoutubeFullscreenButton() {
+    const target = j.$('#fancybox-inner');
+    const observer = new MutationObserver(mutations => {
+      const iframe = target.find('#fancybox-frame');
+      if (iframe) {
+        iframe.attr({
+          allow: 'fullscreen',
+          src: iframe.attr('src'),
+        });
+      }
+    });
+    observer.observe(target[0], {
+      childList: true,
     });
   }
 }
