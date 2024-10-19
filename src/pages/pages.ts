@@ -140,7 +140,7 @@ import { MangaLib } from './MangaLib/main';
 import { AnimeLib } from './AnimeLib/main';
 import { RanobeLib } from './RanobeLib/main';
 import { ScyllaScans } from './ScyllaScans/main';
-import { MangaGalaxy } from './MangaGalaxy/main';
+import { VortexScans } from './VortexScans/main';
 
 export const pages = {
   nineAnime,
@@ -285,5 +285,5 @@ export const pages = {
   AnimeLib,
   RanobeLib,
   ScyllaScans,
-  MangaGalaxy,
+  VortexScans,
 };
