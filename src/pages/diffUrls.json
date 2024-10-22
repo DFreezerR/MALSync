@@ -78,7 +78,8 @@
       "*://*.jwplayerhls.com/*",
       "*://*.videzz.net/*",
       "*://dood.li/e/*",
-      "*://bethshouldercan.com/e/*"
+      "*://bethshouldercan.com/e/*",
+      "*://*.anilib.me/*"
     ]
   }
 }
