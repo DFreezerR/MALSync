@@ -745,4 +745,8 @@ module.exports = {
   anilib: {
     match: ['*://*.anilib.me/*'],
   },
+  // animesama
+  oneupload: {
+    match: ['*://oneupload.to/*'],
+  },
 };
