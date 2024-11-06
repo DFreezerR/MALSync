@@ -8,6 +8,20 @@ export interface timeElement {
   s: number;
 }
 
+export interface durationFormat {
+  months?: number;
+  weeks?: number;
+  days?: number;
+  hours?: number;
+  minutes?: number;
+  seconds?: number;
+  milliseconds?: number;
+  microseconds?: number;
+  nanoseconds?: number;
+}
+
+type durationFormatStyle = 'long' | 'short' | 'narrow' | 'digital';
+
 export function msToTime(milliseconds: number): timeElement {
   let day;
   let hour;
@@ -201,4 +215,43 @@ export function timestampToShortDate(ts: number): string {
   const year = date.getFullYear();
 
   return `${monthAbbreviation} ${dayOfMonth}, ${year}`;
+}
+
+// TODO: Delete @ts-expect-error comments after TS adds support for Intl.DurationFormat
+export function getDurationFromLocale(
+  locale: Intl.LocalesArgument,
+  duration: durationFormat,
+  style: durationFormatStyle = 'short',
+): string {
+  const minsSecondsOnly =
+    (Object.keys(duration).length === 2 && duration.minutes && duration.seconds) ||
+    (Object.keys(duration).length === 1 && (duration.minutes || duration.seconds));
+
+  const inputDuration = minsSecondsOnly
+    ? toHoursAndMinutes(duration.minutes, duration.seconds)
+    : duration;
+
+  // @ts-expect-error surely it works
+  if (!Intl.DurationFormat) {
+    return timeToString({
+      y: 0,
+      d: inputDuration.days || 0,
+      h: inputDuration.hours || 0,
+      m: inputDuration.minutes || 0,
+      s: inputDuration.seconds || 0,
+    });
+  }
+  // @ts-expect-error surely it works
+  const durationString = new Intl.DurationFormat(locale, { style }).format(inputDuration);
+  return durationString;
+}
+
+export function toHoursAndMinutes(minutes: number = 0, seconds: number = 0): durationFormat {
+  const totalSeconds = minutes * 60 + seconds;
+  const hours = Math.floor(totalSeconds / 3600);
+  const mins = Math.floor((totalSeconds % 3600) / 60);
+  return {
+    hours,
+    minutes: mins,
+  } as durationFormat;
 }

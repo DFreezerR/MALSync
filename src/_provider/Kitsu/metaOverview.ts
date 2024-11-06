@@ -1,6 +1,7 @@
 import { MetaOverviewAbstract } from '../metaOverviewAbstract';
 import { NotFoundError, UrlNotSupportedError } from '../Errors';
 import * as helper from './helper';
+import { getDurationFromLocale } from '../../utils/time';
 
 export class MetaOverview extends MetaOverviewAbstract {
   constructor(url) {
@@ -212,7 +213,7 @@ export class MetaOverview extends MetaOverviewAbstract {
         title: api.storage.lang('overview_sidebar_Duration'),
         body: [
           {
-            text: `${this.animeI().attributes.episodeLength} ${api.storage.lang('bookmarksItem_mins')}`,
+            text: `${getDurationFromLocale(api.storage.lang('locale'), { minutes: this.animeI().attributes.episodeLength }, 'narrow')}`,
           },
         ],
       });

@@ -1,6 +1,7 @@
 import { MetaOverviewAbstract } from '../metaOverviewAbstract';
 import { NotFoundError, UrlNotSupportedError } from '../Errors';
 import * as helper from './helper';
+import { getDurationFromLocale } from '../../utils/time';
 
 export class MetaOverview extends MetaOverviewAbstract {
   constructor(url) {
@@ -171,7 +172,11 @@ export class MetaOverview extends MetaOverviewAbstract {
     if (data.runtime && data.runtime)
       this.meta.info.push({
         title: api.storage.lang('overview_sidebar_Duration'),
-        body: [{ text: `${data.runtime} ${api.storage.lang('bookmarksItem_mins')}` }],
+        body: [
+          {
+            text: `${getDurationFromLocale(api.storage.lang('locale'), { minutes: data.runtime }, 'narrow')}`,
+          },
+        ],
       });
 
     if (data.certification && data.certification)

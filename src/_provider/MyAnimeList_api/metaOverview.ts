@@ -2,7 +2,7 @@
 import { MetaOverviewAbstract } from '../metaOverviewAbstract';
 import { UrlNotSupportedError } from '../Errors';
 import * as helper from './helper';
-import { msDiffToShortTimeString } from '../../utils/time';
+import { getDurationFromLocale } from '../../utils/time';
 
 enum mediaTypeDefinition {
   unknown = 'Unknown',
@@ -339,7 +339,11 @@ export class MetaOverview extends MetaOverviewAbstract {
     if (data.average_episode_duration) {
       this.meta.info.push({
         title: api.storage.lang('overview_sidebar_Duration'),
-        body: [{ text: msDiffToShortTimeString(data.average_episode_duration * 1000) }],
+        body: [
+          {
+            text: `${getDurationFromLocale(api.storage.lang('locale'), { seconds: data.average_episode_duration }, 'narrow')}`,
+          },
+        ],
       });
     }
 

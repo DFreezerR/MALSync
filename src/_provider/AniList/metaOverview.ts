@@ -1,7 +1,7 @@
 import { MetaOverviewAbstract, Recommendation, Review } from '../metaOverviewAbstract';
 import { UrlNotSupportedError } from '../Errors';
 import * as helper from './helper';
-import { timestampToShortDate } from '../../utils/time';
+import { getDurationFromLocale, timestampToShortDate } from '../../utils/time';
 
 export class MetaOverview extends MetaOverviewAbstract {
   constructor(url) {
@@ -322,7 +322,11 @@ export class MetaOverview extends MetaOverviewAbstract {
     if (data.data.Media.duration)
       this.meta.info.push({
         title: api.storage.lang('overview_sidebar_Duration'),
-        body: [{ text: `${data.data.Media.duration} ${api.storage.lang('bookmarksItem_mins')}` }],
+        body: [
+          {
+            text: `${getDurationFromLocale(api.storage.lang('locale'), { minutes: data.data.Media.duration }, 'narrow')}`,
+          },
+        ],
       });
 
     if (data.data.Media.status) {
