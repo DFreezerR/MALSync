@@ -255,6 +255,7 @@ export function toHoursAndMinutes(minutes: number = 0, seconds: number = 0): dur
     minutes: mins,
   } as durationFormat;
 }
+
 export function dateFromTimezoneToTimezone(
   date: Date,
   sourceTimezone: string,
