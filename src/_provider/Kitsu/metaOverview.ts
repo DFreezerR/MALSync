@@ -86,7 +86,7 @@ export class MetaOverview extends MetaOverviewAbstract {
     ).then(res => {
       try {
         res.data = res.data[0];
-        // eslint-disable-next-line no-unused-expressions
+        // eslint-disable-next-line no-unused-expressions, @typescript-eslint/no-unused-expressions
         res.data.attributes.slug;
       } catch (e) {
         throw new NotFoundError(e.message);
@@ -213,7 +213,7 @@ export class MetaOverview extends MetaOverviewAbstract {
         title: api.storage.lang('overview_sidebar_Duration'),
         body: [
           {
-            text: `${getDurationFromLocale(api.storage.lang('locale'), { minutes: this.animeI().attributes.episodeLength }, 'narrow')}`,
+            text: `${this.animeI().attributes.episodeLength} ${api.storage.lang('bookmarksItem_mins')}`,
           },
         ],
       });

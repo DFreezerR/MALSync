@@ -53,34 +53,19 @@ export const estimation: ConfObj[] = [
     title: () => api.storage.lang('settings_Interval'),
     change: () => startProgressSync(),
     props: () => {
-      const locale = api.storage.lang('locale');
+      const hours = api.storage.lang('bookmarksItem_Hours');
       return {
         component: 'dropdown',
         option: 'progressInterval',
         props: {
           options: [
             { title: api.storage.lang('settings_Interval_Off'), value: '0' },
-            {
-              title: `${getDurationFromLocale(locale, { minutes: 30 }, 'long')}`,
-              value: '30',
-            },
-            { title: `${getDurationFromLocale(locale, { hours: 1 }, 'long')}`, value: '60' },
-            {
-              title: `${getDurationFromLocale(locale, { hours: 2 }, 'long')}`,
-              value: '120',
-            },
-            {
-              title: `${getDurationFromLocale(locale, { hours: 4 }, 'long')}`,
-              value: '240',
-            },
-            {
-              title: `${getDurationFromLocale(locale, { hours: 12 }, 'long')}`,
-              value: '720',
-            },
-            {
-              title: `${getDurationFromLocale(locale, { hours: 24 }, 'long')}`,
-              value: '1440',
-            },
+            { title: `30 ${api.storage.lang('bookmarksItem_mins')}`, value: '30' },
+            { title: `1 ${api.storage.lang('bookmarksItem_Hour')}`, value: '60' },
+            { title: `2 ${hours}`, value: '120' },
+            { title: `4 ${hours}`, value: '240' },
+            { title: `12 ${hours}`, value: '720' },
+            { title: `24 ${hours}`, value: '1440' },
           ],
         },
       };

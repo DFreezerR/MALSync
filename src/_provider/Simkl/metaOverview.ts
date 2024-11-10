@@ -64,7 +64,7 @@ export class MetaOverview extends MetaOverviewAbstract {
 
     if (Number.isNaN(this.simklId)) {
       const el = await this.call('https://api.simkl.com/search/id', de, true);
-      if (!el) throw new NotFoundError(`simklId: ${this.simklId}`);
+      if (!el?.length) throw new NotFoundError(`simklId: ${this.simklId}`);
       this.simklId = el[0].ids.simkl;
     }
 
@@ -189,11 +189,7 @@ export class MetaOverview extends MetaOverviewAbstract {
     if (data.runtime && data.runtime)
       this.meta.info.push({
         title: api.storage.lang('overview_sidebar_Duration'),
-        body: [
-          {
-            text: `${getDurationFromLocale(api.storage.lang('locale'), { minutes: data.runtime }, 'narrow')}`,
-          },
-        ],
+        body: [{ text: `${data.runtime} ${api.storage.lang('bookmarksItem_mins')}` }],
       });
 
     if (data.certification && data.certification)
