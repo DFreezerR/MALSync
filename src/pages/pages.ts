@@ -135,6 +135,7 @@ import { AnimeLib } from './AnimeLib/main';
 import { RanobeLib } from './RanobeLib/main';
 import { ScyllaScans } from './ScyllaScans/main';
 import { VortexScans } from './VortexScans/main';
+import { AnimeLib } from './AnimeLib/main';
 
 export const pages = {
   Crunchyroll,
@@ -274,4 +275,5 @@ export const pages = {
   RanobeLib,
   ScyllaScans,
   VortexScans,
+  AnimeLib,
 };
