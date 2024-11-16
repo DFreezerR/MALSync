@@ -131,7 +131,6 @@ import { MangaRead } from './MangaRead/main';
 import { Bakashi } from './Bakashi/main';
 import { TempleScan } from './TempleScan/main';
 import { MangaLib } from './MangaLib/main';
-import { AnimeLib } from './AnimeLib/main';
 import { RanobeLib } from './RanobeLib/main';
 import { ScyllaScans } from './ScyllaScans/main';
 import { VortexScans } from './VortexScans/main';
@@ -271,7 +270,6 @@ export const pages = {
   Bakashi,
   TempleScan,
   MangaLib,
-  AnimeLib,
   RanobeLib,
   ScyllaScans,
   VortexScans,
