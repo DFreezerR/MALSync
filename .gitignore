@@ -49,3 +49,8 @@ src/utils/quicklinks.json
 
 # IDE
 .idea
+
+# Lint + cspell
+cspell.json
+cspell.mjs
+eslint.config.mjs
