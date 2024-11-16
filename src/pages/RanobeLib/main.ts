@@ -79,11 +79,11 @@ export const RanobeLib: pageInterface = {
         },
         current: {
           mode: 'callback',
-          callback: () => 1,
+          callback: () => novel.reader.current_subchapter_index! + 1,
         },
         total: {
           mode: 'callback',
-          callback: () => 3,
+          callback: () => novel.reader.total_subchapters! + 1,
         },
       },
       {
