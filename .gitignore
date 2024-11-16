@@ -54,3 +54,4 @@ src/utils/quicklinks.json
 cspell.json
 cspell.mjs
 eslint.config.mjs
+config/eslint/rules/cspell.mjs
