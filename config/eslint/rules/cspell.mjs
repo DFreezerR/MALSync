@@ -1,7 +1,7 @@
 export default /** @type {import('eslint').Linter.FlatConfig} */ ({
   rules: {
     '@cspell/spellchecker': [
-      'warn',
+      'off',
       {
         customWordListFile: './cspell.json',
       },
