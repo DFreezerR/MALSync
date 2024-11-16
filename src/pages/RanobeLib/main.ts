@@ -8,6 +8,7 @@ import { pageInterface } from '../pageInterface';
 const { asyncWaitUntilTrue: awaitOverviewLoading, reset: resetAwaitOverview } =
   utils.getAsyncWaitUntilTrue(() => j.$('.tabs-item').length);
 
+let stillReading = false;
 let interval: number | NodeJS.Timeout;
 
 const novel: Manga = {
@@ -69,7 +70,11 @@ export const RanobeLib: pageInterface = {
       {
         condition: () => {
           const isFloat = /\d+\.\d+/.test(utils.urlPart(window.location.href, 7));
-          if (isFloat && novel.reader.total_subchapters! > novel.reader.current_subchapter_index! + 1)return true;
+          if (isFloat && novel.reader.total_subchapters! > novel.reader.current_subchapter_index! + 1) {
+            stillReading = true;
+            return true;
+          }
+          stillReading = false;
           return false;
         },
         current: {
@@ -115,6 +120,10 @@ export const RanobeLib: pageInterface = {
     });
 
     async function check() {
+      if (stillReading) {
+        await updateSyncPage();
+        return;
+      }
       page.reset();
       resetAwaitOverview();
       clearInterval(interval);
@@ -133,6 +142,10 @@ export const RanobeLib: pageInterface = {
           () => {
             interval = utils.changeDetect(
               async () => {
+                if (stillReading) {
+                  await updateSyncPage();
+                  return;
+                }
                 page.reset();
                 await updateSyncPage();
                 page.handlePage();
