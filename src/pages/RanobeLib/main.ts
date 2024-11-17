@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
 /* eslint-disable new-cap */
 /* eslint-disable no-param-reassign */
 /* eslint-disable global-require */
@@ -70,7 +71,10 @@ export const RanobeLib: pageInterface = {
       {
         condition: () => {
           const isFloat = /\d+\.\d+/.test(utils.urlPart(window.location.href, 7));
-          if (isFloat && novel.reader.total_subchapters! > novel.reader.current_subchapter_index! + 1) {
+          if (
+            isFloat &&
+            novel.reader.total_subchapters! > novel.reader.current_subchapter_index! + 1
+          ) {
             stillReading = true;
             return true;
           }
