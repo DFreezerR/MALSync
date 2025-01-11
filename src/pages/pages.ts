@@ -56,7 +56,6 @@ import { DeathTollScans } from './DeathTollScans/main';
 import { ManhuaPlus } from './ManhuaPlus/main';
 import { Readm } from './Readm/main';
 import { tioanime } from './tioanime/main';
-import { YugenAnime } from './YugenAnime/main';
 import { MangaSee } from './MangaSee/main';
 import { Okanime } from './Okanime/main';
 import { BSTO } from './BSTO/main';
@@ -114,7 +113,6 @@ import { AnimeBuff } from './AnimeBuff/main';
 import { AnimeOnegai } from './AnimeOnegai/main';
 import { AnimeKO } from './AnimeKO/main';
 import { AnimeGO } from './AnimeGO/main';
-import { Animeflix } from './Animeflix/main';
 import { LuciferDonghua } from './LuciferDonghua/main';
 import { NeoxScans } from './NeoxScans/main';
 import { HinataSoul } from './HinataSoul/main';
@@ -128,13 +126,17 @@ import { AnimesOnline } from './AnimesOnline/main';
 import { Miruro } from './Miruro/main';
 import { Latanime } from './Latanime/main';
 import { MangaRead } from './MangaRead/main';
-import { Bakashi } from './Bakashi/main';
+import { Q1N } from './Q1N/main';
 import { TempleScan } from './TempleScan/main';
 import { MangaLib } from './MangaLib/main';
 import { RanobeLib } from './RanobeLib/main';
 import { ScyllaScans } from './ScyllaScans/main';
 import { VortexScans } from './VortexScans/main';
+import { WeebCentral } from './WeebCentral/main';
 import { AnimeLib } from './AnimeLib/main';
+import { Kavita } from './Kavita/main';
+import { MangaLib } from './MangaLib/main';
+import { Aninexus } from './Aninexus/main';
 
 export const pages = {
   Crunchyroll,
@@ -195,7 +197,6 @@ export const pages = {
   ManhuaPlus,
   Readm,
   tioanime,
-  YugenAnime,
   MangaSee,
   Okanime,
   BSTO,
@@ -253,7 +254,6 @@ export const pages = {
   AnimeOnegai,
   AnimeKO,
   AnimeGO,
-  Animeflix,
   LuciferDonghua,
   NeoxScans,
   HinataSoul,
@@ -267,11 +267,15 @@ export const pages = {
   Miruro,
   Latanime,
   MangaRead,
-  Bakashi,
+  Q1N,
   TempleScan,
   MangaLib,
   RanobeLib,
   ScyllaScans,
   VortexScans,
+  WeebCentral,
   AnimeLib,
+  Kavita,
+  MangaLib,
+  Aninexus,
 };
