@@ -128,7 +128,6 @@ import { Latanime } from './Latanime/main';
 import { MangaRead } from './MangaRead/main';
 import { Q1N } from './Q1N/main';
 import { TempleScan } from './TempleScan/main';
-import { MangaLib } from './MangaLib/main';
 import { RanobeLib } from './RanobeLib/main';
 import { ScyllaScans } from './ScyllaScans/main';
 import { VortexScans } from './VortexScans/main';
@@ -269,7 +268,6 @@ export const pages = {
   MangaRead,
   Q1N,
   TempleScan,
-  MangaLib,
   RanobeLib,
   ScyllaScans,
   VortexScans,
