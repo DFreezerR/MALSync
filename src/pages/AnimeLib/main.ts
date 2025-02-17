@@ -101,13 +101,13 @@ export const AnimeLib: pageInterface = {
       // NOTE - We are on the SYNC page
       if (AnimeLib.isSyncPage(window.location.href)) {
         await updateSyncPage();
-        page.handlePage();
+        await page.handlePage();
 
         interval = utils.changeDetect(
           async () => {
             page.reset();
             await updateSyncPage();
-            page.handlePage();
+            await page.handlePage();
           },
           () => window.location.search,
         );
@@ -121,8 +121,8 @@ export const AnimeLib: pageInterface = {
           () => {
             return j.$('.tabs-item').length;
           },
-          () => {
-            page.handlePage();
+          async () => {
+            await page.handlePage();
           },
           500,
         );
