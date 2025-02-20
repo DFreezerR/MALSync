@@ -548,6 +548,7 @@ module.exports = {
       '*://vidnethub.net/*',
       '*://vidco.pro/*',
       '*://omegadthree.com/*',
+      '*://krussdomi.com/*',
     ],
   },
   // animeshouse
@@ -777,4 +778,8 @@ module.exports = {
   bun: {
     match: ['*://*.bunniescdn.online/*'],
   },
+  // animekai
+  megaup: {
+    match: ['*://megaup.cc/e/*'],
+  }
 };

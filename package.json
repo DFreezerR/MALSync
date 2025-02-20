@@ -4,7 +4,7 @@
   "author": "lolamtisch@gmail.com",
   "license": "GPL-3.0-only",
   "repository": "github:MALSync/MALSync",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "Integrates MyAnimeList/AniList/Kitsu/Simkl into various sites, with auto episode tracking.",
   "engines": {
     "npm": ">=8.0.0",
@@ -12,7 +12,7 @@
   },
   "devDependencies": {
     "@ghostery/adblocker-puppeteer": "^2.5.0",
-    "@cspell/eslint-plugin": "8.17.3",
+    "@cspell/eslint-plugin": "8.17.4",
     "@eslint/eslintrc": "3.2.0",
     "@eslint/js": "9.20.0",
     "@stylistic/eslint-plugin": "3.1.0",
@@ -35,8 +35,8 @@
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-airbnb-typescript": "18.0.0",
     "eslint-config-prettier": "10.0.1",
-    "eslint-import-resolver-typescript": "3.8.0",
-    "eslint-plugin-es-x": "8.4.1",
+    "eslint-import-resolver-typescript": "3.8.2",
+    "eslint-plugin-es-x": "8.5.0",
     "eslint-plugin-no-unsanitized": "4.1.2",
     "eslint-plugin-prettier": "5.2.3",
     "eslint-plugin-vue": "9.32.0",
@@ -65,7 +65,7 @@
     "ts-mocha": "^10.0.0",
     "ts-node": "^10.9.2",
     "typescript": "5.7.3",
-    "typescript-eslint": "8.24.0",
+    "typescript-eslint": "8.24.1",
     "vue-eslint-parser": "9.4.3",
     "vue-loader": "^17.4.2",
     "web-ext": "^8.4.0",
@@ -136,7 +136,7 @@
     "vue-dompurify-html": "^5.1.0",
     "vue-router": "^4.5.0",
     "vue-slider-component": "^4.1.0-beta.6",
-    "vue-tsc": "^2.2.0",
+    "vue-tsc": "^2.2.2",
     "vuedraggable": "^4.1.0",
     "webext-patterns": "^1.4.0"
   }
