@@ -137,6 +137,14 @@
     ]
   },
   "0.11.1": {
-    "iframe": []
+    "Miruro": [
+      "*://*.miruro.to/*"
+    ],
+    "iframe": [
+      "*://z7ihwgqj.fun/*",
+      "*://megacloud.club/*",
+      "*://swishsrv.com/e/*",
+      "*://boosterx.stream/*"
+    ]
   }
 }
