@@ -138,6 +138,7 @@
   },
   "0.11.1": {
     "Miruro": [
+      "*://*.miruro.to/*",
       "*://*.miruro.to/*"
     ],
     "iframe": [
