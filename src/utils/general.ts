@@ -218,22 +218,22 @@ export function setUrlInTags(url: string, tags: string) {
   return tags;
 }
 
-export async function setResumeWaching(url: string, ep: number, type, id) {
+export async function setResumeWatching(url: string, ep: number, type, id) {
   return api.storage.set(`resume/${type}/${id}`, { url, ep });
 }
 
-export async function getResumeWaching(type, id): Promise<{ url?: string; ep?: number } | void> {
+export async function getResumeWatching(type, id): Promise<{ url?: string; ep?: number } | void> {
   if (!api.settings.get('malResume')) return;
 
   /* eslint-disable-next-line consistent-return */
   return api.storage.get(`resume/${type}/${id}`);
 }
 
-export async function setContinueWaching(url: string, ep: number, type, id) {
+export async function setContinueWatching(url: string, ep: number, type, id) {
   return api.storage.set(`continue/${type}/${id}`, { url, ep });
 }
 
-export async function getContinueWaching(type, id): Promise<{ url?: string; ep?: number } | void> {
+export async function getContinueWatching(type, id): Promise<{ url?: string; ep?: number } | void> {
   if (!api.settings.get('malContinue')) return;
 
   /* eslint-disable-next-line consistent-return */
@@ -310,9 +310,9 @@ export async function getEntrySettings(type, id, tags = '') {
     }
   }
 
-  const continueUrlObj = await getContinueWaching(type, id);
+  const continueUrlObj = await getContinueWatching(type, id);
   if (continueUrlObj) tempOptions.c = continueUrlObj;
-  const resumeUrlObj = await getResumeWaching(type, id);
+  const resumeUrlObj = await getResumeWatching(type, id);
   if (resumeUrlObj) tempOptions.r = resumeUrlObj;
 
   if (!api.settings.get('usedPage')) tempOptions.u = null;

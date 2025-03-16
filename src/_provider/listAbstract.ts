@@ -251,7 +251,7 @@ export abstract class ListAbstract {
     item.fn = {
       continueUrl: () => {
         if (continueUrlTemp !== null) return continueUrlTemp;
-        return utils.getContinueWaching(item.type, item.cacheKey).then(obj => {
+        return utils.getContinueWatching(item.type, item.cacheKey).then(obj => {
           const curEp = parseInt(item.watchedEp.toString());
 
           if (obj === undefined || obj.ep !== curEp + 1) return '';

@@ -61,11 +61,11 @@ export class MissingPermissions {
   }
 
   getMissingPermissions(currentCustomDomains: domainType[]) {
-    const formated = this.getFormatedPermissions();
+    const formatted = this.getFormattedPermissions();
 
     console.log(currentCustomDomains);
     // check if already added or already in the manifest
-    return formated
+    return formatted
       .filter(perm => {
         return !currentCustomDomains.some(
           currentPerm => currentPerm.page === perm.page && currentPerm.domain === perm.domain,
@@ -74,7 +74,7 @@ export class MissingPermissions {
       .filter(perm => !hasDomainPermission(perm.domain));
   }
 
-  private getFormatedPermissions() {
+  private getFormattedPermissions() {
     const formatted: domainType[] = [];
 
     for (const key in this.missingPermissions) {

@@ -25,7 +25,7 @@ export abstract class SingleAbstract {
 
   protected syncMethod: definitions.syncMethod = 'normal';
 
-  protected persistanceState;
+  protected persistenceState;
 
   protected undoState;
 
@@ -280,7 +280,7 @@ export abstract class SingleAbstract {
     return this.progress;
   }
 
-  public getProgressFormated() {
+  public getProgressFormatted() {
     const op: {
       label: string;
       key: string;
@@ -317,11 +317,11 @@ export abstract class SingleAbstract {
   }
 
   public getProgressOptions() {
-    return this.getProgressFormated().filter(el => el.state !== 'complete');
+    return this.getProgressFormatted().filter(el => el.state !== 'complete');
   }
 
   public getProgressCompleted() {
-    return this.getProgressFormated().filter(el => el.state === 'complete');
+    return this.getProgressFormatted().filter(el => el.state === 'complete');
   }
 
   private updateProgress = false;
@@ -424,7 +424,7 @@ export abstract class SingleAbstract {
         throw e;
       })
       .then(() => {
-        this.persistanceState = this.getStateEl();
+        this.persistenceState = this.getStateEl();
 
         return utils.getEntrySettings(this.type, this.getCacheKey(), this._getTags());
       })
@@ -450,7 +450,7 @@ export abstract class SingleAbstract {
         throw e;
       })
       .then(() => {
-        this.undoState = this.persistanceState;
+        this.undoState = this.persistenceState;
         if (this.updateProgress) this.initProgress();
         this._onList = true;
         this.emitUpdate();
@@ -504,14 +504,14 @@ export abstract class SingleAbstract {
 
     if (data && data.state) {
       this.setStateEl(data.state);
-      this.persistanceState = this.getStateEl();
+      this.persistenceState = this.getStateEl();
       emitter.emit('syncPage_fillUi');
     }
   }
 
   public isDirty(): boolean {
     return (
-      JSON.stringify(this.persistanceState) !== JSON.stringify(this.getStateEl()) ||
+      JSON.stringify(this.persistenceState) !== JSON.stringify(this.getStateEl()) ||
       this.updateProgress
     );
   }
@@ -608,7 +608,7 @@ export abstract class SingleAbstract {
   }
 
   public setResumeWatching(url: string, ep: number) {
-    return utils.setResumeWaching(url, ep, this.type, this.getCacheKey());
+    return utils.setResumeWatching(url, ep, this.type, this.getCacheKey());
   }
 
   public getResumeWatching(): { url: string; ep: number } | null {
@@ -617,7 +617,7 @@ export abstract class SingleAbstract {
   }
 
   public setContinueWatching(url: string, ep: number) {
-    return utils.setContinueWaching(url, ep, this.type, this.getCacheKey());
+    return utils.setContinueWatching(url, ep, this.type, this.getCacheKey());
   }
 
   public getContinueWatching(): { url: string; ep: number } | null {
@@ -656,12 +656,12 @@ export abstract class SingleAbstract {
   }
 
   getStateDiff() {
-    const persistance = this.getStateEl();
-    if (persistance && this.undoState) {
+    const persistence = this.getStateEl();
+    if (persistence && this.undoState) {
       const diff: any = {};
-      for (const key in persistance) {
-        if (persistance[key] !== this.undoState[key]) {
-          diff[key] = persistance[key];
+      for (const key in persistence) {
+        if (persistence[key] !== this.undoState[key]) {
+          diff[key] = persistence[key];
         }
       }
       return diff;
