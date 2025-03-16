@@ -13,18 +13,13 @@ export const AnimeNoSub: pageInterface = {
   },
   sync: {
     getTitle(url) {
-      return j
-        .$('.ts-breadcrumb [itemprop="itemListElement"]:nth-child(2) [itemprop="name"]')
-        .text();
+      return j.$('.infolimit [itemprop="partOfSeries"]').text();
     },
     getIdentifier(url) {
       return AnimeNoSub.overview!.getIdentifier(AnimeNoSub.sync.getOverviewUrl(url));
     },
     getOverviewUrl(url) {
-      const overview = j
-        .$('.ts-breadcrumb [itemprop="itemListElement"]:nth-child(2) a')
-        .attr('href');
-      return overview ? utils.absoluteLink(overview, AnimeNoSub.domain) : '';
+      return j.$('.headlist a').first().attr('href') || '';
     },
     getEpisode(url) {
       const urlParts = url.split('/');
