@@ -99,6 +99,20 @@ pages.forEach(el => {
     run_at: 'document_start',
   });
 })
+content_scripts.push({
+  matches: [
+    '*://*.malsync.moe/*',
+    '*://*.manganato.gg/*',
+    '*://*.natomanga.com/*',
+    '*://*.nelomanga.com/*',
+    '*://*.mangakakalot.gg/*',
+    '*://anilib.me/*',
+    '*://mangalib.me/*',
+    '*://ranobelib.me/*',
+  ],
+  js: ['vendor/jquery.min.js', 'i18n.js', 'content/chibi.js', 'content/content-script.js'],
+  run_at: 'document_start',
+});
 
 content_scripts.push({
   matches: generateMatchExcludes(playerUrls).match,
