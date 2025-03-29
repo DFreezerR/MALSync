@@ -138,9 +138,15 @@
   },
   "0.11.1": {
     "Miruro": [
+      "*://*.miruro.to/*",
       "*://*.miruro.to/*"
     ],
+    "Zoro": [
+      "*://hianime.bz/*",
+      "*://hianime.pe/*"
+    ],
     "iframe": [
+      "*://kristiesoundsimply.com/e/*",
       "*://z7ihwgqj.fun/*",
       "*://megacloud.club/*",
       "*://swishsrv.com/e/*",
