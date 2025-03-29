@@ -16,7 +16,7 @@
         </div>
       </Card>
     </Section>
-    <Card class="list-sync">
+    <Card class="list-sync provider">
       <Section>
         <FormSwitch
           v-model="parameters.type"
@@ -240,7 +240,7 @@
       v-if="!syncRequest.loading && syncRequest.data && syncRequest.data.missingGroupBy.length"
     >
       <Header spacer="half">{{ lang('settings_listsync_missing') }}</Header>
-      <Description :height="500">
+      <Grid :min-width="250">
         <Section
           v-for="(missing_title, index) in syncRequest.data.missingGroupBy"
           :key="index"
@@ -300,7 +300,7 @@
             </div>
           </Card>
         </Section>
-      </Description>
+      </Grid>
     </Section>
   </div>
 </template>
@@ -322,6 +322,7 @@ import CodeBlock from '../code-block.vue';
 import SettingsGeneral from './settings-general.vue';
 import FormCheckbox from '../form/form-checkbox.vue';
 import { IntlDateTime } from '../../../utils/IntlWrapper';
+import Grid from '../grid.vue';
 
 defineProps({
   title: {
@@ -492,15 +493,14 @@ updateBackgroundSyncState();
       display: flex;
     }
   }
-}
-
-.provider-section {
-  align-items: end;
-  display: flex;
-  flex-wrap: wrap;
-  grid-gap: 5px;
-  :deep(a) {
-    color: var(--cl-secondary);
+  &-section {
+    align-items: end;
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 5px;
+    :deep(a) {
+      color: var(--cl-secondary);
+    }
   }
 }
 
@@ -518,10 +518,21 @@ updateBackgroundSyncState();
   }
 }
 
-.missing-item {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  width: fit-content;
+.missing {
+  width: 100%;
+  height: 100%;
+
+  > * {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+
+    .missing-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
 }
 </style>
