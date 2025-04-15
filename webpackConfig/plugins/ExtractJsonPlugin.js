@@ -1,9 +1,9 @@
-const fs = require('fs');
-const path = require('path');
-const { createRequire } = require('module');
-const webpack = require('webpack');
+import fs from 'fs';
+import path from 'path';
+import { createRequire } from 'module';
+import webpack from 'webpack';
 
-module.exports = class ExtractJsonPlugin {
+export class ExtractJsonPlugin {
   constructor(options) {
     this.options = {
       entryName: '',
@@ -48,7 +48,7 @@ module.exports = class ExtractJsonPlugin {
 
       setTimeout(() => {
         try {
-          const require = createRequire(__dirname);
+          const require = createRequire(import.meta.url);
 
           if (require.cache[outputPath]) {
             delete require.cache[outputPath];
@@ -58,7 +58,6 @@ module.exports = class ExtractJsonPlugin {
           const module = require(outputPath);
           const jsonData = globalThis._extractJson.default();
 
-          console.log('\n');
           if (this.options.folderMode) {
             const folderPath = path.join(compiler.outputPath, filename);
 
@@ -94,7 +93,7 @@ module.exports = class ExtractJsonPlugin {
             let fileSizeDisplay = `${fileSizeInBytes} bytes`;
 
             console.log(
-              `asset \x1b[32m${filename}\x1b[0m ${fileSizeDisplay} \x1b[33m[extracted]\x1b[0m (name: ${entryName})`,
+              `\nasset \x1b[32m${filename}\x1b[0m ${fileSizeDisplay} \x1b[33m[extracted]\x1b[0m (name: ${entryName})`,
             );
           }
 
@@ -106,3 +105,5 @@ module.exports = class ExtractJsonPlugin {
     });
   }
 }
+
+export default ExtractJsonPlugin;
