@@ -1,7 +1,7 @@
 import { PageInterface } from '../../pageInterface';
 
 export const mangaNato: PageInterface = {
-  name: 'MangaMato',
+  name: 'MangaNato',
   database: 'MangaNato',
   domain: [
     'https://manganato.gg',
@@ -55,6 +55,18 @@ export const mangaNato: PageInterface = {
         .boolean(false)
         .run();
     },
+    readerConfig: [
+      {
+        current: {
+          selector: '.container-chapter-reader img',
+          mode: 'countAbove',
+        },
+        total: {
+          selector: '.container-chapter-reader img',
+          mode: 'count',
+        },
+      },
+    ],
   },
   overview: {
     isOverviewPage($c) {

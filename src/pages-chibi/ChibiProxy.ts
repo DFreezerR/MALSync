@@ -1,4 +1,5 @@
 import { doesUrlMatchPatterns } from 'webext-patterns';
+import { NotFoundError } from '../_provider/Errors';
 import type { ChibiJson } from '../chibiScript/ChibiGenerator';
 import { ChibiConsumer } from '../chibiScript/ChibiConsumer';
 import { pageInterface } from '../pages/pageInterface';
@@ -27,7 +28,7 @@ export const Chibi = async (): Promise<pageInterface> => {
   });
 
   if (matchingPages.length === 0) {
-    throw new Error('No matching page found');
+    throw new NotFoundError('No matching page found');
   }
   if (matchingPages.length > 1) {
     con.error('Multiple matching pages found', matchingPages);
@@ -94,6 +95,7 @@ export const Chibi = async (): Promise<pageInterface> => {
             return consumer.run();
           }
         : undefined,
+      readerConfig: currentPage.sync.readerConfig ? currentPage.sync.readerConfig : undefined,
     },
     overview:
       currentPage.overview || currentPage.list
@@ -133,6 +135,7 @@ export const Chibi = async (): Promise<pageInterface> => {
                         }
 
                         const consumer = getConsumer(currentPage.list!.elementUrl!, pageD);
+                        consumer.addVariable('element', selector);
                         return consumer.run(selector);
                       }
                     : undefined,
@@ -142,6 +145,7 @@ export const Chibi = async (): Promise<pageInterface> => {
                     }
 
                     const consumer = getConsumer(currentPage.list!.elementEp, pageD);
+                    consumer.addVariable('element', selector);
                     return consumer.run(selector);
                   },
                 }
