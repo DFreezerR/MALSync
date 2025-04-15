@@ -7,7 +7,7 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const pages = require('./utils/pages').pages();
 const { getKeys } = require('./utils/keys');
 const { getVirtualScript } = require('./utils/general');
-const ExtractJsonPlugin = require('./plugins/ExtractJsonPlugin');
+const ExtractJsonPlugin = require('./plugins/ExtractJsonPlugin').default;
 
 let entry = {
   'content-script': path.join(
