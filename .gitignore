@@ -55,3 +55,4 @@ cspell.json
 cspell.mjs
 eslint.config.mjs
 config/eslint/rules/cspell.mjs
+src/chibiScript/ChibiGeneratorTypes.ts
