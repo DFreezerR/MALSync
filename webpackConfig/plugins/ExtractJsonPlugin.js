@@ -1,9 +1,9 @@
-import fs from 'fs';
-import path from 'path';
-import { createRequire } from 'module';
-import webpack from 'webpack';
+const fs = require('fs');
+const path = require('path');
+const { createRequire } = require('module');
+const webpack = require('webpack');
 
-export class ExtractJsonPlugin {
+module.exports = class ExtractJsonPlugin {
   constructor(options) {
     this.options = {
       entryName: '',
@@ -48,7 +48,7 @@ export class ExtractJsonPlugin {
 
       setTimeout(() => {
         try {
-          const require = createRequire(import.meta.url);
+          const require = createRequire(__dirname);
 
           if (require.cache[outputPath]) {
             delete require.cache[outputPath];
@@ -105,5 +105,3 @@ export class ExtractJsonPlugin {
     });
   }
 }
-
-export default ExtractJsonPlugin;
