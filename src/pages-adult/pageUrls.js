@@ -26,7 +26,4 @@ module.exports = {
   Nhentai: {
     match: ['*://nhentai.net/g/*'],
   },
-  HentaiLib: {
-    match: ['*://hentailib.me/*'],
-  },
 };
