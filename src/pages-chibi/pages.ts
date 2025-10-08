@@ -20,6 +20,35 @@ import { MangaDemon } from './implementations/MangaDemon/main';
 import { RoliaScan } from './implementations/RoliaScan/main';
 import { Mangitto } from './implementations/Mangitto/main';
 import { Anizium } from './implementations/Anizium/main';
+import { Miruro } from './implementations/Miruro/main';
+import { MangaPark } from './implementations/MangaPark/main';
+import { Q1N } from './implementations/Q1N/main';
+import { QiScans } from './implementations/QiScans/main';
+import { Thunderscans } from './implementations/Thunderscans/main';
+import { StoneScape } from './implementations/StoneScape/main';
+import { ResetScans } from './implementations/ResetScans/main';
+import { Utoon } from './implementations/Utoon/main';
+import { WitchScans } from './implementations/WitchScans/main';
+import { Sadscans } from './implementations/Sadscans/main';
+import { ArvenComics } from './implementations/ArvenComics/main';
+import { Comikey } from './implementations/Comikey/main';
+import { AuroraScans } from './implementations/AuroraScans/main';
+import { ComicTop } from './implementations/ComicTop/main';
+import { Atsumaru } from './implementations/Atsumaru/main';
+import { Madarascans } from './implementations/Madarascans/main';
+import { AsuraScans } from './implementations/AsuraScans/main';
+import { FRAnime } from './implementations/FRAnime/main';
+import { VortexScans } from './implementations/VortexScans/main';
+import { FlameScans } from './implementations/FlameScans/main';
+import { ZeroScans } from './implementations/ZeroScans/main';
+import { DrakeScans } from './implementations/DrakeScans/main';
+import { AsmodeusScans } from './implementations/AsmodeusScans/main';
+import { GenzToon } from './implementations/GenzToon/main';
+import { MangaTaro } from './implementations/MangaTaro/main';
+import { ScyllaScans } from './implementations/ScyllaScans/main';
+import { TritiniaScans } from './implementations/TritiniaScans/main';
+import { AnimeNoSub } from './implementations/AnimeNoSub/main';
+import { Rawkuma } from './implementations/Rawkuma/main';
 
 export const pages: { [key: string]: PageInterface } = {
   animeav1,
@@ -42,4 +71,33 @@ export const pages: { [key: string]: PageInterface } = {
   RoliaScan,
   Mangitto,
   Anizium,
+  Miruro,
+  MangaPark,
+  Q1N,
+  QiScans,
+  Thunderscans,
+  StoneScape,
+  ResetScans,
+  Utoon,
+  WitchScans,
+  Sadscans,
+  ArvenComics,
+  Comikey,
+  AuroraScans,
+  ComicTop,
+  Atsumaru,
+  Madarascans,
+  AsuraScans,
+  FRAnime,
+  VortexScans,
+  FlameScans,
+  ZeroScans,
+  DrakeScans,
+  AsmodeusScans,
+  GenzToon,
+  MangaTaro,
+  ScyllaScans,
+  TritiniaScans,
+  AnimeNoSub,
+  Rawkuma,
 };

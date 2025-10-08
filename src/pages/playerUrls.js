@@ -252,6 +252,7 @@ module.exports = {
       '*://*.mixdrop.my/e/*',
       '*://*.mixdrop.sn/e/*',
       '*://*.mixdrop.cv/e/*',
+      '*://*.md3b0j6hj.com/e/*',
       // auto-mixdrop-replace-dont-remove
     ],
   },
@@ -711,6 +712,7 @@ module.exports = {
       '*://gorro-chfzoaas.fun/e/*',
       '*://gorro-chfzoaas.fun/lol/*',
       '*://z7ihwgqj.fun/*',
+      '*://pqham.com/*',
     ],
   },
   // toonanime
@@ -727,7 +729,7 @@ module.exports = {
   },
   // animenosub
   animenosub: {
-    match: ['*://animenosub.upn.one/#*'],
+    match: ['*://animenosub.upn.one/#*', '*://nova.upn.one/*'],
   },
   // voiranime
   streamhide: {
@@ -781,7 +783,12 @@ module.exports = {
   },
   // Q1N
   q1n: {
-    match: ['*://rogeriobetin.com/*', '*://nvlabs-fi-cdn.q9x.in/*'],
+    match: [
+      '*://rogeriobetin.com/*',
+      '*://nvlabs-fi-cdn.q9x.in/*',
+      '*://api.anivideo.net/*',
+      '*://listeamed.net/*',
+    ],
   },
   // animesama
   oneupload: {
@@ -805,7 +812,7 @@ module.exports = {
   },
   // animekai
   megaup: {
-    match: ['*://megaup.cc/e/*', '*://megaup.site/e/*'],
+    match: ['*://megaup.cc/e/*', '*://megaup.site/e/*', '*://megaup.live/e/*'],
   },
   // hikari
   boosterx: {
@@ -818,6 +825,10 @@ module.exports = {
   // miruro
   megaplay: {
     match: ['*://megaplay.buzz/*'],
+  },
+  // Anizm
+  anizmplayer: {
+    match: ['*://*.anizmplayer.com/*'],
   },
   // aniworld
   loadx: {
