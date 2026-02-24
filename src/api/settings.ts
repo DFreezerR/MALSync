@@ -14,7 +14,7 @@ export const settingsObj = {
     rpc: true,
     presenceLargeImage: 'cover',
     presenceShowButtons: true,
-    presenceShowMalsync: false,
+    presenceActivityName: 'title',
     userscriptModeButton: false,
     syncMode: 'MAL',
     syncModeSimkl: 'MAL',
@@ -95,6 +95,9 @@ export const settingsObj = {
 
     customDomains: [],
 
+    chibiRepos: [],
+
+    anilistExternalSources: false,
     anilistUpdateUi: true,
 
     anilistToken: '',
@@ -136,7 +139,7 @@ export const settingsObj = {
     }
 
     try {
-      const chibiRepo = await ChibiListRepository.getInstance(true).init();
+      const chibiRepo = await (await ChibiListRepository.getInstance(true)).init();
       this.chibiList = chibiRepo.getList();
     } catch (e) {
       con.error('Error loading chibi repo', e);

@@ -1,13 +1,10 @@
 import { Mangadex } from './Mangadex/main';
 import { TurkAnime } from './TurkAnime/main';
 import { Emby } from './Emby/main';
-import { Plex } from './Plex/main';
 import { Netflix } from './Netflix/main';
-import { animepahe } from './animepahe/main';
 import { Animeflv } from './Animeflv/main';
 import { Jkanime } from './Jkanime/main';
 import { Proxer } from './Proxer/main';
-import { Aniflix } from './Aniflix/main';
 import { KickAssAnime } from './KickAssAnime/main';
 import { Shinden } from './Shinden/main';
 import { Voiranime } from './Voiranime/main';
@@ -17,9 +14,7 @@ import { AnimeOdcinki } from './AnimeOdcinki/main';
 import { serimanga } from './serimanga/main';
 import { mangadenizi } from './mangadenizi/main';
 import { moeclip } from './moeclip/main';
-import { mangalivre } from './mangalivre/main';
 import { tmofans } from './tmofans/main';
-import { MangaPlus } from './MangaPlus/main';
 import { JapScan } from './JapScan/main';
 import { Hulu } from './Hulu/main';
 import { Hidive } from './Hidive/main';
@@ -33,7 +28,6 @@ import { OtakuFR } from './OtakuFR/main';
 import { mangatx } from './mangatx/main';
 import { manhuafast } from './manhuafast/main';
 import { TRanimeizle } from './TRanimeizle/main';
-import { AnimeStreamingFR } from './AnimeStreamingFR/main';
 import { Furyosociety } from './Furyosociety/main';
 import { AnimeId } from './AnimeId/main';
 import { MyAnimeListVideo } from './MyAnimeListVideo/main';
@@ -42,7 +36,6 @@ import { MangaHere } from './MangaHere/main';
 import { MangaFox } from './MangaFox/main';
 import { DesuOnline } from './DesuOnline/main';
 import { WuxiaWorld } from './WuxiaWorld/main';
-import { LeviatanScans } from './LeviatanScans/main';
 import { ReaperScans } from './ReaperScans/main';
 import { LynxScans } from './LynxScans/main';
 import { DeathTollScans } from './DeathTollScans/main';
@@ -63,23 +56,19 @@ import { FrixySubs } from './FrixySubs/main';
 import { Guya } from './Guya/main';
 import { MangaHub } from './MangaHub/main';
 import { Bentomanga } from './Bentomanga/main';
-import { MangaSushi } from './MangaSushi/main';
 import { ReadManhua } from './ReadManhua/main';
 import { ImmortalUpdates } from './ImmortalUpdates/main';
 import { Zoro } from './Zoro/main';
-import { Kitsune } from './Kitsune/main';
 import { LHTranslation } from './LHTranslation/main';
 import { MangasOrigines } from './MangasOrigines/main';
 import { BlueSolo } from './BlueSolo/main';
 import { DisasterScans } from './DisasterScans/main';
-import { DynastyScans } from './DynastyScans/main';
 import { Aniworld } from './Aniworld/main';
 import { BetterAnime } from './BetterAnime/main';
 import { BilibiliComics } from './BilibiliComics/main';
 import { MangaReader } from './MangaReader/main';
 import { AnimeOnsen } from './AnimeOnsen/main';
 import { Animetoast } from './Animetoast/main';
-import { LuminousScans } from './LuminousScans/main';
 import { Animeworld } from './Animeworld/main';
 import { MangaBuddy } from './MangaBuddy/main';
 import { ToonAnime } from './ToonAnime/main';
@@ -119,14 +108,11 @@ import { AniDream } from './AniDream/main';
 export const pages = {
   Mangadex,
   TurkAnime,
-  animepahe,
   Netflix,
   Animeflv,
   Jkanime,
   Proxer,
   Emby,
-  Plex,
-  Aniflix,
   KickAssAnime,
   Shinden,
   Voiranime,
@@ -136,9 +122,7 @@ export const pages = {
   serimanga,
   mangadenizi,
   moeclip,
-  mangalivre,
   tmofans,
-  MangaPlus,
   JapScan,
   Hulu,
   Hidive,
@@ -152,7 +136,6 @@ export const pages = {
   mangatx,
   manhuafast,
   TRanimeizle,
-  AnimeStreamingFR,
   Furyosociety,
   AnimeId,
   MyAnimeListVideo,
@@ -161,7 +144,6 @@ export const pages = {
   MangaFox,
   DesuOnline,
   WuxiaWorld,
-  LeviatanScans,
   ReaperScans,
   LynxScans,
   DeathTollScans,
@@ -182,23 +164,19 @@ export const pages = {
   Guya,
   MangaHub,
   Bentomanga,
-  MangaSushi,
   ReadManhua,
   ImmortalUpdates,
   Zoro,
-  Kitsune,
   LHTranslation,
   MangasOrigines,
   BlueSolo,
   DisasterScans,
-  DynastyScans,
   Aniworld,
   BetterAnime,
   BilibiliComics,
   MangaReader,
   AnimeOnsen,
   Animetoast,
-  LuminousScans,
   Animeworld,
   MangaBuddy,
   ToonAnime,

@@ -46,7 +46,17 @@ export const MangaPark: PageInterface = {
       return $c.querySelector('h3 > a[href*="/title/"]').getAttribute('href').urlAbsolute().run();
     },
     getEpisode($c) {
-      return $c.url().urlPart(5).regex('(chapter|ch)(-|.)(\\d+)', 3).number().ifNotReturn().run();
+      const chapter = $c
+        .url()
+        .urlPart(5)
+        .regex('(chapter|ch)(-|.)(\\d+)', 3)
+        .number()
+        .ifNotReturn()
+        .run();
+
+      const st = $c.url().urlPart(5).regex('-(\\d+)(st|nd|rd|th)', 1).number().ifNotReturn().run();
+
+      return $c.coalesce($c.fn(chapter).run(), $c.fn(st).run()).run();
     },
     getVolume($c) {
       return $c.url().urlPart(5).regex('(volume|vol)(-|.)(\\d+)', 3).number().ifNotReturn().run();
@@ -94,6 +104,23 @@ export const MangaPark: PageInterface = {
           group: 1,
         },
       },
+      /*
+      {
+        condition: $c => $c.querySelector('[href^="?page="].btn-outline').boolean().run(),
+        current: $c => $c.querySelector('[href^="?page="].btn-outline').text().number().run(),
+        total: $c => $c.querySelector('[href^="?page="]:last-of-type').text().number().run(),
+      },
+      {
+        current: $c => $c.querySelectorAll('[data-name="image-item"] img').countAbove().run(),
+        total: $c =>
+          $c
+            .querySelector('[data-name="image-item"]:first-child [data-name="image-show"]')
+            .getAttribute('style')
+            .regex('(\\d+)<\\/text>', 1)
+            .number()
+            .run(),
+      },
+      */
     ],
   },
   overview: {

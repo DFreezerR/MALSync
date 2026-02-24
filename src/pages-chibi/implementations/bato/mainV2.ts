@@ -66,6 +66,8 @@ export const batoV2: PageInterface = {
       '*://mangatoto.com/*',
       '*://mangatoto.net/*',
       '*://mangatoto.org/*',
+      '*://bato.si/*',
+      '*://bato.ing/*',
     ],
   },
   search: 'https://bato.to/search?word={searchtermPlus}',
@@ -211,7 +213,10 @@ function getChapterText($c: ChibiGenerator<any>) {
 }
 
 export function getChapter($c: ChibiGenerator<string>) {
-  return $c.regex('(ch|chapter|episode|ep|chap|chp|no\\.?)\\D?(\\d+)', 2).ifNotReturn().number();
+  return $c
+    .regex('(ch|chapter|episode|ep\\.?|chap|chp|no\\.?)\\D?(\\d+)', 2)
+    .ifNotReturn()
+    .number();
 }
 
 export function getVolume($c: ChibiGenerator<string>) {

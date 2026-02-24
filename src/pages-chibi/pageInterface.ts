@@ -10,6 +10,13 @@ export interface PageInterface {
   name: string;
   /** The type of media this page handles */
   type: 'anime' | 'manga';
+
+  /**
+   * (Optional) Function to compute the type dynamically. In cases a page contains multiple types of content.
+   * Evaluated during page trigger
+   */
+  computedType?: ($c: ChibiGenerator<unknown>) => ChibiJson<'anime' | 'manga' | 'novel' | string>;
+
   /** The domain(s) of the website */
   domain: string | string[];
   /**
@@ -23,6 +30,19 @@ export interface PageInterface {
    */
   urls: {
     match: string[];
+    /**
+     * Optional URL patterns used to identify video player iframes
+     */
+    player?: { [key: string]: string[] };
+  };
+  /**
+   * Additional features for the page integration
+   */
+  features?: {
+    /** Proxy website requests */
+    requestProxy?: boolean;
+    /** Add the possibility to add custom domains to this implementation */
+    customDomains?: boolean;
   };
   /**
    * URL template for the site's search functionality
@@ -129,7 +149,7 @@ export interface PageInterface {
      * Configuration for the manga progress functionality.
      * This property is optional.
      */
-    readerConfig?: mangaProgressConfig[];
+    readerConfig?: (ChibiMangaProgressConfig | mangaProgressConfig)[];
   };
 
   /**
@@ -249,6 +269,15 @@ export interface PageInterface {
   };
 }
 
+export type ChibiMangaProgressConfig = {
+  /** A condition to check if this config should be applied */
+  condition?: ($c: ChibiGenerator<unknown>) => ChibiJson<boolean>;
+  /** The current page number */
+  current: ($c: ChibiGenerator<unknown>) => ChibiJson<number>;
+  /** The total number of pages */
+  total: ($c: ChibiGenerator<unknown>) => ChibiJson<number>;
+};
+
 export interface PageInterfaceCompiled extends PageInterface {
   /** The version of the page integration */
   version: {
@@ -268,6 +297,7 @@ export type PageListInterface = Pick<
   | 'database'
   | 'version'
   | 'minimumVersion'
+  | 'features'
 > & {
   /** The unique key of the page integration */
   key: string;
@@ -281,6 +311,7 @@ export type PageListJsonInterface = {
 };
 
 export type PageJsonInterface = PageInterfaceCompiled & {
+  computedType: ReturnType<NonNullable<PageInterface['computedType']>>;
   sync: {
     isSyncPage: ReturnType<PageInterface['sync']['isSyncPage']>;
     getTitle: ReturnType<PageInterface['sync']['getTitle']>;
