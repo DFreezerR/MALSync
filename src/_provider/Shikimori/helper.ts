@@ -8,7 +8,7 @@ export async function userIDRequest(apiType?: 'REST' | 'GRAPHQL') {
   const cacheObj = new Cache<string>('shiki/userId', 4 * 60 * 60 * 1000);
 
   if (await cacheObj.hasValue()) {
-    return cacheObj.getValue();
+    return cacheObj.getValue() as Promise<string>;
   }
 
   const res = await Queries.CurrentUser(apiType);

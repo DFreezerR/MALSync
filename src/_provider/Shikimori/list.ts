@@ -111,7 +111,7 @@ export class UserList extends ListAbstract {
     for (let i = 0; i < data.length; i++) {
       const item = this.listType === 'anime' ? data[i].anime! : data[i].manga!;
       const tempData = await this.fn({
-        malId: item.malId,
+        malId: Number(item.malId),
         apiCacheKey: item.id,
         uid: item.id,
         cacheKey: item.id,
