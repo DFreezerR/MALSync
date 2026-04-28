@@ -1,5 +1,5 @@
 import { SingleAbstract } from '../singleAbstract';
-import { NotAutenticatedError, NotFoundError, UrlNotSupportedError } from '../Errors';
+import { NotAuthenticatedError, NotFoundError, UrlNotSupportedError } from '../Errors';
 import { point100 } from '../ScoreMode/point100';
 import {
   authenticationUrl,
@@ -247,7 +247,7 @@ export class Single extends SingleAbstract {
       try {
         json = (await call(urls.libraryEntry(seriesEntry.id))).data as BakaLibraryEntry;
       } catch (e) {
-        if (e instanceof NotAutenticatedError) {
+        if (e instanceof NotAuthenticatedError) {
           this._authenticated = false;
           this.logger.m('Api').info(e.message);
           json = null;
@@ -291,7 +291,7 @@ export class Single extends SingleAbstract {
     if (!this.libraryEntry.start_date) this.libraryEntry.start_date = undefined;
     if (!this.libraryEntry.finish_date) this.libraryEntry.finish_date = undefined;
 
-    if (!this._authenticated) throw new NotAutenticatedError('Not Authenticated');
+    if (!this._authenticated) throw new NotAuthenticatedError('Not Authenticated');
   }
 
   async _sync() {

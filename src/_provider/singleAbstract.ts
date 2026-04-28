@@ -596,7 +596,7 @@ export abstract class SingleAbstract {
   }
 
   public setResumeWatching(url: string, ep: number) {
-    return utils.setResumeWaching(url, ep, this.type, this.getCacheKey());
+    return utils.setResumeWatching(url, ep, this.type, this.getCacheKey());
   }
 
   public getResumeWatching(): { url: string; ep: number } | null {
@@ -605,7 +605,7 @@ export abstract class SingleAbstract {
   }
 
   public setContinueWatching(url: string, ep: number) {
-    return utils.setContinueWaching(url, ep, this.type, this.getCacheKey());
+    return utils.setContinueWatching(url, ep, this.type, this.getCacheKey());
   }
 
   public getContinueWatching(): { url: string; ep: number } | null {

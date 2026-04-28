@@ -1,5 +1,5 @@
 import {
-  NotAutenticatedError,
+  NotAuthenticatedError,
   NotFoundError,
   parseJson,
   ServerOfflineError,
@@ -84,7 +84,7 @@ export async function call(
         if (await refreshToken()) {
           return call(url, sData, method, login);
         }
-        throw new NotAutenticatedError('user_token_failed');
+        throw new NotAuthenticatedError('user_token_failed');
       }
       throw err;
     });

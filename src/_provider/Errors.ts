@@ -6,7 +6,7 @@ export class NotAuthenticatedError extends Error {
   }
 }
 
-export class TokenExpiredError extends NotAutenticatedError {
+export class TokenExpiredError extends NotAuthenticatedError {
   constructor(message: string) {
     super(message);
     this.name = 'TokenExpiredError';
