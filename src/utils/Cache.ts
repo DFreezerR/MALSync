@@ -1,6 +1,6 @@
 import { localStore } from './localStore';
 
-export class Cache<ValueType = any> {
+export class Cache<T = any> {
   constructor(
     protected key: string,
     protected ttl: number,
@@ -61,12 +61,12 @@ export class Cache<ValueType = any> {
     };
   }
 
-  async getValue() {
+  async getValue(): Promise<T | null> {
     const value = await this.getStorage();
-    return value.data as ValueType;
+    return value.data;
   }
 
-  async setValue(result: ValueType) {
+  async setValue(result: T) {
     const save = { data: result, timestamp: new Date().getTime() };
     if (this.localStorage) {
       return localStore.setItem(this.key, JSON.stringify(save));

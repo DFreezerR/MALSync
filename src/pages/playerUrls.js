@@ -84,7 +84,7 @@ module.exports = {
     match: ['*://*.mega.nz/*'],
   },
   animeflv: {
-    match: ['*://*.animeflv.net/*', '*://*.jwplayerhls.com/*'],
+    match: ['*://*.animeflv.net/*', '*://*.jwplayerhls.com/*', '*://playnixes.com/*'],
   },
   netu: {
     match: ['*://*.hqq.tv/*', '*://waaw.tv/*'],
@@ -555,6 +555,12 @@ module.exports = {
       '*://myvidplay.com/e/*',
       '*://lauradaydo.com/e/*',
       '*://lancewhosedifficult.com/e/*',
+      '*://dianaavoidthey.com/e/*',
+      '*://jefferycontrolmodel.com/e/*',
+      '*://jessicaclearout.com/e/*',
+      '*://marissasharecareer.com/e/*',
+      '*://charlestoughrace.com/e/*',
+      '*://timmaybealready.com/e/*',
       // auto-voe-replace-dont-remove
     ],
   },
@@ -834,6 +840,7 @@ module.exports = {
       '*://megaup.live/e/*',
       '*://4spromax.site/e/*',
       '*://megaup22.online/e/*',
+      '*://megaup.nl/e/*',
     ],
   },
   // hikari
@@ -885,5 +892,8 @@ module.exports = {
   },
   sHide: {
     match: ['*://callistanise.com/*', '*://habetar.com/*', '*://yuguaab.com/*'],
+  },
+  allManga: {
+    match: ['*://allanime.day/*', '*://allanime.uns.bio/*'],
   },
 };

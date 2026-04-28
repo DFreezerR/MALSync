@@ -1,7 +1,7 @@
 import * as definitions from './definitions';
 
-import { Progress } from '../utils/progress';
-import { predictionXhrGET } from '../background/releaseProgressUtils';
+import { ProgressRelease } from '../utils/progressRelease';
+import { predictionXhrGET, ProgressItem } from '../background/releaseProgressUtils';
 
 import { emitter, globalEmit } from '../utils/emitter';
 import { SafeError } from '../utils/errors';
@@ -9,6 +9,7 @@ import { returnYYYYMMDD } from '../utils/general';
 import { errorMessage as _errorMessage } from './Errors';
 import { point10 } from './ScoreMode/point10';
 import { SyncTypes } from './helper';
+import { Progress } from '../utils/progress';
 
 Object.seal(emitter);
 
@@ -25,7 +26,7 @@ export abstract class SingleAbstract {
 
   protected syncMethod: definitions.syncMethod = 'normal';
 
-  protected persistenceState;
+  protected persistenceState?: ReturnType<SingleAbstract['getStateEl']>;
 
   protected undoState;
 
@@ -39,6 +40,8 @@ export abstract class SingleAbstract {
 
   protected rewatchingSupport = true;
 
+  protected consideringSupport = false;
+
   protected datesSupport = true;
 
   protected ids = {
@@ -49,6 +52,7 @@ export abstract class SingleAbstract {
       slug: '',
     },
     simkl: NaN,
+    baka: NaN,
   };
 
   protected options: {
@@ -70,6 +74,10 @@ export abstract class SingleAbstract {
 
   public supportsRewatching() {
     return this.rewatchingSupport;
+  }
+
+  public supportsConsidering() {
+    return this.consideringSupport;
   }
 
   public supportsDates() {
@@ -203,9 +211,10 @@ export abstract class SingleAbstract {
   abstract _setEpisode(episode: number): void;
 
   public setEpisode(episode: number): SingleAbstract {
-    let ep = parseInt(`${episode}`);
-    if (this.getTotalEpisodes() && ep > this.getTotalEpisodes()) ep = this.getTotalEpisodes();
-    this._setEpisode(ep);
+    episode = parseInt(`${episode}`);
+    if (this.getTotalEpisodes() && episode > this.getTotalEpisodes())
+      episode = this.getTotalEpisodes();
+    this._setEpisode(episode);
     return this;
   }
 
@@ -251,13 +260,13 @@ export abstract class SingleAbstract {
     this.options = null;
   }
 
-  protected progress: false | Progress = false;
+  protected progress?: ProgressRelease;
 
-  protected progressXhr;
+  protected progressXhr?: ProgressItem[];
 
   public async initProgress() {
     const xhr = await predictionXhrGET(this.getType()!, this.getApiCacheKey());
-    return new Progress(this.getCacheKey(), this.getType()!)
+    return new ProgressRelease(this.getCacheKey(), this.getType()!)
       .init({
         uid: this.getCacheKey(),
         apiCacheKey: this.getApiCacheKey(),
@@ -276,52 +285,21 @@ export abstract class SingleAbstract {
   }
 
   public getProgress() {
-    if (!this.progress) return false;
+    if (!this.progress) return null;
     return this.progress;
   }
 
   public getProgressFormatted() {
-    const op: {
-      label: string;
-      key: string;
-      state: 'complete' | 'ongoing' | 'dropped' | 'discontinued';
-      type: 'dub' | 'sub';
-      dropped: boolean;
-      episode: number;
-      lastEp?: {
-        total: number;
-        timestamp?: number;
-      };
-      predicition?: {
-        timestamp: number;
-        probability: 'low' | 'medium' | 'high';
-      };
-    }[] = [];
-    const languageNames = new Intl.DisplayNames('en', { type: 'language' });
-    con.log(this.progressXhr);
-    if (this.progressXhr && Object.keys(this.progressXhr).length) {
-      this.progressXhr.forEach(el => {
-        op.push({
-          type: el.type,
-          key: el.id,
-          state: el.state,
-          label: languageNames.of(el.lang.replace(/^jp$/, 'ja')) || el.lang,
-          dropped: el.state === 'dropped' || el.state === 'discontinued',
-          episode: el.lastEp && el.lastEp.total ? el.lastEp.total : 0,
-          lastEp: el.lastEp,
-          predicition: el.prediction,
-        });
-      });
-    }
-    return op;
+    if (!this.progressXhr || !this.progressXhr.length) return [];
+    return this.progressXhr.map(el => new Progress(el, this.getType()!));
   }
 
   public getProgressOptions() {
-    return this.getProgressFormatted().filter(el => el.state !== 'complete');
+    return this.getProgressFormatted().filter(el => el.getState() !== 'complete');
   }
 
   public getProgressCompleted() {
-    return this.getProgressFormatted().filter(el => el.state === 'complete');
+    return this.getProgressFormatted().filter(el => el.getState() === 'complete');
   }
 
   private updateProgress = false;
@@ -516,6 +494,16 @@ export abstract class SingleAbstract {
     );
   }
 
+  public isValueDirty(key: keyof ReturnType<SingleAbstract['getStateEl']>): boolean {
+    if (!this._onList) {
+      return true;
+    }
+    if (this.persistenceState) {
+      return this.persistenceState[key] !== this.getStateEl()[key];
+    }
+    return false;
+  }
+
   public undo(): Promise<void> {
     this.logger.log('[SINGLE]', 'Undo', this.undoState);
     if (!this.undoState) throw new SafeError('No undo state found');
@@ -608,7 +596,7 @@ export abstract class SingleAbstract {
   }
 
   public setResumeWatching(url: string, ep: number) {
-    return utils.setResumeWatching(url, ep, this.type, this.getCacheKey());
+    return utils.setResumeWaching(url, ep, this.type, this.getCacheKey());
   }
 
   public getResumeWatching(): { url: string; ep: number } | null {
@@ -617,7 +605,7 @@ export abstract class SingleAbstract {
   }
 
   public setContinueWatching(url: string, ep: number) {
-    return utils.setContinueWatching(url, ep, this.type, this.getCacheKey());
+    return utils.setContinueWaching(url, ep, this.type, this.getCacheKey());
   }
 
   public getContinueWatching(): { url: string; ep: number } | null {
@@ -627,6 +615,10 @@ export abstract class SingleAbstract {
 
   public increaseRewatchCount(): void {
     //  do nothing
+  }
+
+  public finishedAiring(): boolean {
+    return true;
   }
 
   getStateEl() {
@@ -640,6 +632,7 @@ export abstract class SingleAbstract {
       rewatchCount: this.getRewatchCount(),
       score: this.getScore(),
       absoluteScore: this.getAbsoluteScore(),
+      tags: this._getTags(),
     };
   }
 
@@ -656,12 +649,12 @@ export abstract class SingleAbstract {
   }
 
   getStateDiff() {
-    const persistence = this.getStateEl();
-    if (persistence && this.undoState) {
+    const persistance = this.getStateEl();
+    if (persistance && this.undoState) {
       const diff: any = {};
-      for (const key in persistence) {
-        if (persistence[key] !== this.undoState[key]) {
-          diff[key] = persistence[key];
+      for (const key in persistance) {
+        if (persistance[key] !== this.undoState[key]) {
+          diff[key] = persistance[key];
         }
       }
       return diff;
@@ -740,7 +733,7 @@ export abstract class SingleAbstract {
       return false;
     }
 
-    if (episode && episode === this.getTotalEpisodes()) {
+    if (episode && episode === this.getTotalEpisodes() && this.finishedAiring()) {
       this.askCompleted = true;
       return true;
     }
@@ -869,6 +862,12 @@ export abstract class SingleAbstract {
         label: api.storage.lang(`UI_Status_Rewatching_${this.getType()}`),
       });
     }
+    if (this.supportsConsidering()) {
+      statusEs.push({
+        value: definitions.status.Considering.toString(),
+        label: api.storage.lang('UI_Status_Considering'),
+      });
+    }
 
     return statusEs;
   }
@@ -886,6 +885,7 @@ export abstract class SingleAbstract {
     if (this.ids.ani && allowed.includes('ANILIST')) return `anilist:${this.ids.ani}`;
     if (this.ids.kitsu.id && allowed.includes('KITSU')) return `kitsu:${this.ids.kitsu.id}`;
     if (this.ids.simkl && allowed.includes('SIMKL')) return `simkl:${this.ids.simkl}`;
+    if (this.ids.baka && allowed.includes('MANGABAKA')) return `mangabaka:${this.ids.baka}`;
     return this.ids.mal;
   }
 

@@ -67,7 +67,7 @@ async function kickassanime() {
 }
 
 async function animekai() {
-  const response = await fetch('https://animekai.ws/');
+  const response = await fetch('https://animekai.pw/');
   const body = await response.text();
 
   const $ = cheerio.load(body);
@@ -337,9 +337,7 @@ async function start() {
     } else {
       console.log('\x1b[31mTasks failed:\x1b[0m', failedTasks.join(', '));
     }
-    if (!process.env.GITHUB_ACTIONS) {
-      process.exitCode = 1;
-    }
+    process.exitCode = 1;
   }
 
   console.log('\nAutoUrls — Done.');

@@ -83,6 +83,7 @@ import { LagoonScans } from './implementations/LagoonScans/main';
 import { WeebDex } from './implementations/WeebDex/main';
 import { SetsuScans } from './implementations/SetsuScans/main';
 import { Mgeko } from './implementations/Mgeko/main';
+import { MangaClash } from './implementations/MangaClash/main';
 import { LuaScans } from './implementations/LuaScans/main';
 import { KaynScan } from './implementations/KaynScan/main';
 import { ComicWalker } from './implementations/ComicWalker/main';
@@ -94,6 +95,15 @@ import { AniGo } from './implementations/AniGo/main';
 import { Kuudere } from './implementations/Kuudere/main';
 import { BigSolo } from './implementations/BigSolo/main';
 import { Plex } from './implementations/Plex/main';
+import { allManga } from './implementations/allManga/main';
+import { GaiaFlix } from './implementations/GaiaFlix/main';
+import { AniZone } from './implementations/AniZone/main';
+import { AnimeNexus } from './implementations/AnimeNexus/main';
+import { templeScan } from './implementations/TempleScan/main';
+import { ElfToon } from './implementations/ElfToon/main';
+import { Zoro } from './implementations/Zoro/main';
+import { TeamShadowi } from './implementations/TeamShadowi/main';
+import { TopManhua } from './implementations/TopManhua/main';
 
 export const pages: { [key: string]: PageInterface } = {
   animeav1,
@@ -179,6 +189,8 @@ export const pages: { [key: string]: PageInterface } = {
   WeebDex,
   SetsuScans,
   Mgeko,
+  MangaClash,
+  TopManhua,
   LuaScans,
   KaynScan,
   ComicWalker,
@@ -190,4 +202,12 @@ export const pages: { [key: string]: PageInterface } = {
   Kuudere,
   BigSolo,
   Plex,
+  allManga,
+  GaiaFlix,
+  AniZone,
+  AnimeNexus,
+  templeScan,
+  ElfToon,
+  Zoro,
+  TeamShadowi,
 };

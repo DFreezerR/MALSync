@@ -1,3 +1,4 @@
+import { urlToSlug } from '../utils/slugs';
 import * as helper from './helper';
 import { Cache } from '../utils/Cache';
 
@@ -5,6 +6,7 @@ import { Single as MalSingle } from './MyAnimeList_hybrid/single';
 import { Single as MalApiSingle } from './MyAnimeList_api/single';
 import { Single as AnilistSingle } from './AniList/single';
 import { Single as KitsuSingle } from './Kitsu/single';
+import { Single as MangaBakaSingle } from './MangaBaka/single';
 import { Single as SimklSingle } from './Simkl/single';
 import { Single as ShikiSingle } from './Shikimori/single';
 import { Single as LocalSingle } from './Local/single';
@@ -13,7 +15,13 @@ export function getSingle(url: string) {
   if (/^local:\/\//i.test(url)) {
     return new LocalSingle(url);
   }
-  const syncMode = helper.getSyncMode(url);
+
+  const slug = urlToSlug(url);
+  if (!slug.path) {
+    throw new Error(`URL not supported: ${url}`);
+  }
+
+  const syncMode = helper.getSyncMode(slug.path.type);
   if (syncMode === 'MAL') {
     return new MalSingle(url);
   }
@@ -25,6 +33,9 @@ export function getSingle(url: string) {
   }
   if (syncMode === 'KITSU') {
     return new KitsuSingle(url);
+  }
+  if (syncMode === 'MANGABAKA') {
+    return new MangaBakaSingle(url);
   }
   if (syncMode === 'SIMKL') {
     return new SimklSingle(url);

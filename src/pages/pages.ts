@@ -58,7 +58,6 @@ import { MangaHub } from './MangaHub/main';
 import { Bentomanga } from './Bentomanga/main';
 import { ReadManhua } from './ReadManhua/main';
 import { ImmortalUpdates } from './ImmortalUpdates/main';
-import { Zoro } from './Zoro/main';
 import { LHTranslation } from './LHTranslation/main';
 import { MangasOrigines } from './MangasOrigines/main';
 import { BlueSolo } from './BlueSolo/main';
@@ -100,7 +99,6 @@ import { Taiyo } from './Taiyo/main';
 import { AnimesOnline } from './AnimesOnline/main';
 import { Latanime } from './Latanime/main';
 import { MangaRead } from './MangaRead/main';
-import { TempleScan } from './TempleScan/main';
 import { Kavita } from './Kavita/main';
 import { Aninexus } from './Aninexus/main';
 import { AniDream } from './AniDream/main';
@@ -166,7 +164,6 @@ export const pages = {
   Bentomanga,
   ReadManhua,
   ImmortalUpdates,
-  Zoro,
   LHTranslation,
   MangasOrigines,
   BlueSolo,
@@ -208,7 +205,6 @@ export const pages = {
   AnimesOnline,
   Latanime,
   MangaRead,
-  TempleScan,
   Kavita,
   Aninexus,
   AniDream,

@@ -18,6 +18,7 @@ export const settingsObj = {
     userscriptModeButton: false,
     syncMode: 'MAL',
     syncModeSimkl: 'MAL',
+    splitTracking: false,
     localSync: true,
     delay: 0,
     videoDuration: 85,
@@ -56,7 +57,6 @@ export const settingsObj = {
       'MangaFox',
       'MangaSee',
       'MangaFire',
-      'HiAnime',
       'Hulu',
       'Netflix',
       'Hidive',
@@ -66,6 +66,7 @@ export const settingsObj = {
       'WeebCentral',
       'KickAssAnime',
       'animepahe',
+      'AnimeKAI',
     ],
     quicklinksPosition: 'default',
 
@@ -115,6 +116,9 @@ export const settingsObj = {
 
     malToken: '',
     malRefresh: '',
+
+    mangabakaToken: '',
+    mangabakaRefresh: '',
 
     shikiToken: '',
     shikiOptions: {
