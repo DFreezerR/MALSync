@@ -160,5 +160,8 @@
       "*://timmaybealready.com/e/*",
       "*://megaup.nl/e/*"
     ]
+  },
+  "0.12.3": {
+    "iframe": []
   }
 }
