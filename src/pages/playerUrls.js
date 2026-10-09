@@ -561,6 +561,7 @@ module.exports = {
       '*://marissasharecareer.com/e/*',
       '*://charlestoughrace.com/e/*',
       '*://timmaybealready.com/e/*',
+      '*://teresapoliticallearn.com/e/*',
       // auto-voe-replace-dont-remove
     ],
   },
